@@ -68,6 +68,9 @@
         </td>
         <td class="add-child">
             <form method="post" action="<%= group_add_member_url :id => group %>">
+                <div style="margin:0;padding:0"><%= tag(:input, :type => "hidden", 
+                    :name => request_forgery_protection_token.to_s, 
+                    :value => form_authenticity_token) %></div>
                 <select name="user_id", id="user_id">
                     <%= options_for_select User.find(:all, :order => 'name ASC').map{|u| [u.name, u.id]}.unshift(['—', '']) %>
                 </select>
